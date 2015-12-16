@@ -1,0 +1,321 @@
+<resources>
+    <string name="app_name">Vampire: The Masquerade</string>
+    <string name="subtitle_main">The Masquerade</string>
+    <string name="large_text">
+        The Main Concept
+        \n\n
+        Vampire: The Masquerade is the first Classic World of Darkness game and the first Storyteller
+        System game published by White Wolf. A major departure from the more power and heroics oriented
+        games of the era, VTM is a game of personal horror. It is the parent and the most popular of all
+        the World of Darkness games, and was the genesis of almost all the major ideas people associate with White Wolf.
+        \n\n
+        In Vampire: the Masquerade, the players assume the role of vampires, immortal beings cursed
+        with an unquenchable thirst for blood and vulnerability to sunlight - creatures forever bound
+        to their inner Beast (the animal urges of hunger, fear and rage). It is a game of personal horror,
+        as the characters are continually forced to walk a moral tightrope between their need to survive
+        and the horrific means by which they ensure it.
+        \n\n
+        The Vampires of the Classic World of Darkness
+        \n\n
+        Vampires are one of the three main supernatural races in the Classic World of Darkness and
+        the fundamental characters of Vampire: The Masquerade and Kindred of the East. The article
+        above offers a closer look at vampires, with their physiology, their politics and their clan division.
+        \n\n
+        In Vampire: The Masquerade, "Kindred" is the most common euphemism for a vampire. However,
+        the term is mostly used by vampires who strive to maintain their Humanity. On the other hand,
+        Sabbat vampires prefer the term "Cainite" to refer to themselves - as many of them believe that
+        the vampiric curse originated with the biblical Cain, after he murdered his brother, Abel.
+        The term "Kine" (i.e. "cattle") is the opposite of Kindred, and refers to human population.
+        \n\n
+        Vampiric Society
+        \n\n
+        Most vampires live in cities, which are run feudally by the Princes; life in a city is one
+        of constant political manipulation and paranoia, as the Cainites vie for food, territory and power.
+        But while they must dwell in close contact with their source of sustenance, vampires largely
+        fear the exposure to the mortal world, and since the Inquisition the majority of these creatures
+        have lived under the Masquerade - an enforced campaign to hide their supernatural existences from humanity.
+        \n\n
+        In general, vampiric societies consist of two levels: sects and clans. Characters within the
+        Vampire setting are members of one of the clans or minor bloodlines offered, and usually belong
+        to factions associated with these or that reflect a general ideological stance the characters
+        happen to share. For example, a Brujah may belong to the Camarilla, the Sabbat, or the Anarchs,
+        but very few Tremere would be found among the Sabbat and even more rarely among the Anarchs.
+        \n\n
+        Some clans and most of the minor bloodlines declare themselves independent from any sects.
+        In addition, the Laibon, known as the Kindred of the Ebony Kingdom by Western Vampires,
+        are not so much a sect as a cultural group bound together loosely by a powerful spiritual
+        bond to the land and the people of Africa. While the Kuei-jin, also known as the Kindred of
+        the East, share some superficial similarity to the western vampires, but they are actually
+        an entirely different variety of supernatural beings.
+        \n\n\n
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_create_character">Create Character</string>
+    <string name="subtitle_activity_create_character">Information</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="player">Player</string>
+    <string name="attributes">Attributes</string>
+    <string name="abilities">Abilities</string>
+    <string name="talents">Talents</string>
+    <string name="skills">Skills</string>
+    <string name="knowledge">Knowledges</string>
+    <string name="advantages">Advantages</string>
+    <string name="other_traits">Other Traits</string>
+    <string name="night_stats">Night Stats</string>
+    <string name="name">Name</string>
+    <string name="chronicle">Chronicle</string>
+    <string name="nature">Nature</string>
+    <string name="demeanor">Demeanor</string>
+    <string name="concept">Concept</string>
+    <string name="clan">Clan</string>
+    <string name="generation">Generation</string>
+    <string name="sire">Sire</string>
+    <string-array name="string_array_clan">
+        <item>Assamite</item>
+        <item>Brujah</item>
+        <item>Followers of Set</item>
+        <item>Gangrel</item>
+        <item>Giovanni</item>
+        <item>Lasombra</item>
+        <item>Malkavian</item>
+        <item>Nosferatu</item>
+        <item>Ravnos</item>
+        <item>Toreador</item>
+        <item>Tremere</item>
+        <item>Tzimisce</item>
+        <item>Ventrue</item>
+        <item>Cappadocian</item>
+        <item>Salubri</item>
+    </string-array>
+    <string-array name="string_array_nature">
+        <item>Architect</item>
+        <item>Autocrat</item>
+        <item>Autist</item>
+        <item>Avant-Garde</item>
+        <item>BonVivant</item>
+        <item>Bravo</item>
+        <item>Caregiver</item>
+        <item>Cavalier</item>
+        <item>Child</item>
+        <item>Competitor</item>
+        <item>Confidant</item>
+        <item>Conformist</item>
+        <item>Conniver</item>
+        <item>Critic</item>
+        <item>Curmudgeon</item>
+        <item>Deviant</item>
+        <item>Director</item>
+        <item>Fanatic</item>
+        <item>Gallant</item>
+        <item>Honest-Abe</item>
+        <item>Jester</item>
+        <item>Jobsworth</item>
+        <item>Judge</item>
+        <item>Loner</item>
+        <item>Manipulator</item>
+        <item>Martyr</item>
+        <item>Masochist</item>
+        <item>Mediator</item>
+        <item>Optimist</item>
+        <item>Pedagogue</item>
+        <item>Penitent</item>
+        <item>Perfectionist</item>
+        <item>Plotter</item>
+        <item>Poltroon</item>
+        <item>Praise-seeker</item>
+        <item>Rebel</item>
+        <item>Survivor</item>
+        <item>Sycophant</item>
+        <item>Traditionalist</item>
+        <item>Thrill-Seeker</item>
+        <item>Visionary</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="string_array_generation">
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+        <item>11th</item>
+        <item>12th</item>
+        <item>13th</item>
+        <item>14th</item>
+        <item>15th</item>
+    </string-array>
+
+    <string-array name="string_array_disciplines">
+        <item>Animalism</item>
+        <item>Assamite Sorcery</item>
+        <item>Auspex</item>
+        <item>Celerity</item>
+        <item>Chimestry</item>
+        <item>Daimonion</item>
+        <item>Dementation</item>
+        <item>Dominate</item>
+        <item>Flight</item>
+        <item>Gargoyle Flight</item>
+        <item>Fortitude</item>
+        <item>Koldunic Sorcery</item>
+        <item>Melpominee</item>
+        <item>Mortis</item>
+        <item>Mytherceria</item>
+        <item>Necromancy</item>
+        <item>Nihilistics</item>
+        <item>Obeah</item>
+        <item>Obfuscate</item>
+        <item>Obtenebration</item>
+        <item>Potence</item>
+        <item>Presence</item>
+        <item>Protean</item>
+        <item>Quietus</item>
+        <item>Sanguinus</item>
+        <item>Serpentis</item>
+        <item>Setile Sorcery</item>
+        <item>Temporis</item>
+        <item>Thanatosis</item>
+        <item>Thaumaturgy</item>
+        <item>Dark Thaumaturgy</item>
+        <item>Thaumaturgical Countermagic</item>
+        <item>Valeren</item>
+        <item>Vicissitude</item>
+        <item>Visceratika</item>
+    </string-array>
+
+    <string-array name="string_array_combo_disciplines">
+        <item>Aegis of Entropy</item>
+        <item>Anticipatory Locution</item>
+        <item>Anticipatory Visage</item>
+        <item>Armory of the Abyss</item>
+        <item>Awaken the Slumbering Curse</item>
+        <item>Beast Meld</item>
+        <item>Becoming Kupala</item>
+        <item>Birth the Vozhd</item>
+        <item>Bliss</item>
+        <item>Body Armory</item>
+        <item>Burning Wrath</item>
+        <item>Charon\'s Oar</item>
+        <item>Clarity of Emptiness</item>
+        <item>Claw Immunity</item>
+        <item>Denial of Aphrodite\'s Favor</item>
+        <item>Doubletalk</item>
+        <item>Echo of the Subtle Vizier</item>
+        <item>Effigy of the Sculpted Tomb</item>
+        <item>Elemental Stoicism</item>
+        <item>Eminence of Shade Conquering Blood</item>
+        <item>Eye of Unforgiving Heaven</item>
+        <item>Flaying Touch</item>
+        <item>Flesh of Wind and Water</item>
+        <item>Flesh Wound</item>
+        <item>Forced March</item>
+        <item>Fountain of Ill Humors</item>
+        <item>Glare of Lies</item>
+        <item>Hand of the Master Artisan</item>
+        <item>Heart\'s Desire</item>
+        <item>Instantaneous Transformation</item>
+        <item>Iron Facade</item>
+        <item>Iron Heart</item>
+        <item>Jaws of the Dragon</item>
+        <item>Lifesong</item>
+        <item>Martyr\'s Resilience</item>
+        <item>Mask of Cathay</item>
+        <item>Measure the Will</item>
+        <item>Mind\'s Eye</item>
+        <item>Mortal Terror</item>
+        <item>Name of the Fallen</item>
+        <item>Pater Szlachta</item>
+        <item>Penitent Resilience</item>
+        <item>Pulse of Undeath</item>
+        <item>Quicken Sight</item>
+        <item>Quicksilver Contemplation</item>
+        <item>Random Patterns</item>
+        <item>Sanguinary Expulsion</item>
+        <item>Sculpt the Flowing Wound</item>
+        <item>See the Reflected Form</item>
+        <item>See the True Shape</item>
+        <item>Shadow Feint</item>
+        <item>Shroud of Absence</item>
+        <item>Soul Decoration</item>
+        <item>Soul Painting</item>
+        <item>Stunning Awe</item>
+        <item>Sympathetic Agony</item>
+        <item>Thaumaturgical Sight</item>
+        <item>True Love\'s Face</item>
+        <item>Typhonic Beast</item>
+        <item>Unassailable Parry</item>
+        <item>Unchain the Wrathful Beast</item>
+        <item>Weigh the Heart</item>
+        <item>Witness of Ahriman</item>
+    </string-array>
+
+    <string-array name="koldunic">
+        <item>The Way of Earth</item>
+        <item>The Way of Fire</item>
+        <item>The Way of Sorrow</item>
+        <item>The Way of Spirit</item>
+        <item>The Way of Water</item>
+        <item>The Way of Wind</item>
+        <item>Standard Rituals</item>
+        <item>Advanced Rituals</item>
+    </string-array>
+
+    <string name="title_activity_create_character_attributes">Create Character</string>
+    <string name="subtitle_activity_create_character_attributes">Attributes</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_create_character_abilities">Create Character</string>
+    <string name="subtitle_activity_create_character_abilities">Abilities</string>
+    <string name="title_activity_create_character_abilities2">Create Character</string>
+    <string name="title_activity_create_character_abilities3">Create Character</string>
+    <string name="title_activity_create_character_advantages">Create Character</string>
+    <string name="subtitle_activity_create_character_advantages">Advantages</string>
+
+    <string name="animalism">Animalism</string>
+    <string name="assamite_sorcery">Assamite Sorcery</string>
+    <string name="auspex">Auspex</string>
+    <string name="celerity">Celerity</string>
+    <string name="chimestry">Chimestry</string>
+    <string name="daimonion">Daimonion</string>
+    <string name="dementation">Dementation</string>
+    <string name="dominate">Dominate</string>
+    <string name="flight">Flight</string>
+    <string name="gargoyle_flight">Gargoyle Flight</string>
+    <string name="fortitude">Fortitude</string>
+    <string name="koldunic">Koldunic Sorcery</string>
+    <string name="melpominee">Melpominee</string>
+    <string name="mortis">Mortis</string>
+    <string name="mytherceria">Mytherceria</string>
+    <string name="necromancy">Necromancy</string>
+    <string name="nihilistics">Nihilistics</string>
+    <string name="obeah">Obeah</string>
+    <string name="obfuscate">Obfuscate</string>
+    <string name="obtenebration">Obtenebration</string>
+    <string name="potence">Potence</string>
+    <string name="presence">Presence</string>
+    <string name="protean">Protean</string>
+    <string name="quietus">Quietus</string>
+    <string name="sanguinus">Sanguinus</string>
+    <string name="serpentis">Serpentis</string>
+    <string name="setile">Setile Sorcery</string>
+    <string name="temporis">Temporis</string>
+    <string name="thanatosis">Thanatosis</string>
+    <string name="thaumaturgy">Thaumaturgy</string>
+    <string name="d_thaumaturgy">Dark Thaumaturgy</string>
+    <string name="thaumaturgical_countermagic">Thaumaturgical Countermagic</string>
+    <string name="valeren">Valeren</string>
+    <string name="vicissitude">Vicissitude</string>
+    <string name="visceratika">Visceratika</string>
+
+    <string name="paths">Paths</string>
+    <string name="path_earth">The Way of Earth</string>
+    <string name="path_fire">The Way of Fire</string>
+    <string name="path_sorrow">The Path of Sorrow</string>
+    <string name="path_spirit">The Path of Spirit</string>
+    <string name="path_water">The Path of Water</string>
+    <string name="path_wind">The Path of Wind</string>
+    <string name="standard_rituals">Standard Rituals</string>
+    <string name="advanced_rituals">Advanced Rituals</string>
+
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.threemenstudio.vampire">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/applogo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="vampire.MainPage"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="vampire.CreateCharacterPlayerInfo"
+            android:label="@string/title_activity_create_character"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="vampire.CreateCharacterAttributes"
+            android:label="@string/title_activity_create_character_attributes"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="vampire.CreateCharacterAbilities"
+            android:label="@string/title_activity_create_character_abilities"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="vampire.CreateCharacterAbilities2"
+            android:label="@string/title_activity_create_character_abilities2"
+            android:parentActivityName="vampire.CreateCharacterAbilities"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vampire.CreateCharacterAbilities" />
+        </activity>
+        <activity
+            android:name="vampire.CreateCharacterAbilities3"
+            android:label="@string/title_activity_create_character_abilities3"
+            android:parentActivityName="vampire.CreateCharacterAbilities2"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="vampire.CreateCharacterAbilities2" />
+        </activity>
+        <activity
+            android:name="vampire.CreateCharacterAdvantages"
+            android:label="@string/title_activity_create_character_advantages"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

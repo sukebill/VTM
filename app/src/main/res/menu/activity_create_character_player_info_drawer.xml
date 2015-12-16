@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/player"
+            android:title="@string/player" />
+        <item android:id="@+id/attributes"
+            android:title="@string/attributes" />
+        <item android:id="@+id/abilities"
+            android:title="@string/abilities" />
+        <item android:id="@+id/advantages"
+            android:title="@string/advantages" />
+        <item android:id="@+id/other_traits"
+            android:title="@string/other_traits" />
+        <item android:id="@+id/night_stats"
+            android:title="@string/night_stats" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+
+        </menu>
+    </item>
+
+</menu>

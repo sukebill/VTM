@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_create_character"
+    tools:context="com.threemenstudio.vampire.CreateCharacterPlayerInfo"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:id="@+id/Name"
+                android:inputType="none" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/player"
+                android:id="@+id/Player"
+                android:inputType="none" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/chronicle"
+                android:id="@+id/Chronicle"
+                android:inputType="none" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/nature"
+                    android:id="@+id/textView2"
+                    android:gravity="center"
+                    android:textColor="@color/colorAccent" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/nature_sp"
+                    android:spinnerMode="dropdown"
+                    android:nestedScrollingEnabled="true"
+                    android:textAlignment="center"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/demeanor"
+                    android:id="@+id/textView3"
+                    android:gravity="center"
+                    android:textColor="@color/colorAccent"
+                    />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/demeanor_sp"
+                    android:spinnerMode="dropdown"
+                    android:nestedScrollingEnabled="true"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="15dp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/concept"
+                android:id="@+id/Concept"
+                android:inputType="none" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/clan"
+                    android:id="@+id/textView6"
+                    android:gravity="center"
+                    android:textColor="@color/colorAccent" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/clan_sp"
+                    android:spinnerMode="dropdown"
+                    android:nestedScrollingEnabled="true"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/generation"
+                    android:id="@+id/textView4"
+                    android:gravity="center"
+                    android:textColor="@color/colorAccent" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/generation_sp"
+                    android:spinnerMode="dropdown"
+                    android:nestedScrollingEnabled="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="right" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sire"
+                android:id="@+id/Sire"
+                android:inputType="none" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

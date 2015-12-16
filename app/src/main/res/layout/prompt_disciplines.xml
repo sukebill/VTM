@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/animalism"
+                    android:id="@+id/diciplineText1"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9"
+                    android:clickable="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp1"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/assamite_sorcery"
+                    android:id="@+id/diciplineText2"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp2"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/auspex"
+                    android:id="@+id/diciplineText3"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp3"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/celerity"
+                    android:id="@+id/diciplineText4"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp4"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/chimestry"
+                    android:id="@+id/diciplineText5"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp5"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/daimonion"
+                    android:id="@+id/diciplineText6"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp6"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/dementation"
+                    android:id="@+id/diciplineText7"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp7"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/dominate"
+                    android:id="@+id/diciplineText8"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp8"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/flight"
+                    android:id="@+id/diciplineText9"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp9"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/gargoyle_flight"
+                    android:id="@+id/diciplineText10"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp10"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/fortitude"
+                    android:id="@+id/diciplineText11"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp11"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/koldunic"
+                    android:id="@+id/diciplineText12"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp12"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/melpominee"
+                    android:id="@+id/diciplineText13"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp13"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/mortis"
+                    android:id="@+id/diciplineText14"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp14"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/mytherceria"
+                    android:id="@+id/diciplineText15"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp15"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/necromancy"
+                    android:id="@+id/diciplineText16"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp16"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/nihilistics"
+                    android:id="@+id/diciplineText17"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp17"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/obeah"
+                    android:id="@+id/diciplineText18"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp18"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/obfuscate"
+                    android:id="@+id/diciplineText19"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp19"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/obtenebration"
+                    android:id="@+id/diciplineText20"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp20"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/potence"
+                    android:id="@+id/diciplineText21"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp21"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/presence"
+                    android:id="@+id/diciplineText22"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp22"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/protean"
+                    android:id="@+id/diciplineText23"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp23"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/quietus"
+                    android:id="@+id/diciplineText24"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp24"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/sanguinus"
+                    android:id="@+id/diciplineText25"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp25"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/serpentis"
+                    android:id="@+id/diciplineText26"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp26"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/setile"
+                    android:id="@+id/diciplineText27"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp27"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/temporis"
+                    android:id="@+id/diciplineText28"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp28"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/thanatosis"
+                    android:id="@+id/diciplineText29"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp29"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/thaumaturgy"
+                    android:id="@+id/diciplineText30"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp30"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/d_thaumaturgy"
+                    android:id="@+id/diciplineText31"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp31"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/thaumaturgical_countermagic"
+                    android:id="@+id/diciplineText32"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp32"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/valeren"
+                    android:id="@+id/diciplineText33"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp33"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/vicissitude"
+                    android:id="@+id/diciplineText34"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp34"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/visceratika"
+                    android:id="@+id/diciplineText35"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="0.9" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diciplineHelp35"
+                    android:src="@drawable/ic_action_about" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        </ScrollView>
+
+
+</LinearLayout>
