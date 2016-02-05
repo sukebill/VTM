@@ -317,7 +317,7 @@
     <string name="standard_rituals">Standard Rituals</string>
     <string name="advanced_rituals">Advanced Rituals</string>
     <string name="title_activity_clans">Clans</string>
-    <string name="title_activity_clan_info">ClanInfo</string>
+    <string name="title_activity_clan_info">Clan Information</string>
 
 
 </resources>
