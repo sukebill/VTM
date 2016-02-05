@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.threemenstudio.vampire">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/applogo"
@@ -53,7 +55,11 @@
         <activity
             android:name="vampire.CreateCharacterAdvantages"
             android:label="@string/title_activity_create_character_advantages"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="vampire.Clans"
+            android:label="@string/title_activity_clans"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
