@@ -59,7 +59,11 @@
         <activity
             android:name="vampire.Clans"
             android:label="@string/title_activity_clans"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="vampire.ClanInfo"
+            android:label="@string/title_activity_clan_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
