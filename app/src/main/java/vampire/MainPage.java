@@ -1,6 +1,8 @@
 package vampire;
 
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +13,17 @@ import android.view.MenuItem;
 
 import com.threemenstudio.vampire.R;
 
+import database.DbHelper;
+import database.VtmDb;
+
 public class MainPage extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setSubtitle("jhbjhbvc");
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +33,18 @@ public class MainPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        DbHelper dbHelper = new DbHelper(this);
+        try {
+            dbHelper.createDataBase();
+        } catch (Exception ioe) {
+            ioe.printStackTrace();
+        }
+        try {
+            dbHelper.openDataBase();
+           dbHelper.close();
+        }catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
     }
 
     @Override
@@ -49,5 +66,14 @@ public class MainPage extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openClans(View v){
+        Intent intent = new Intent(this, Clans.class);
+        startActivity(intent);
+    }
+
+    public void openDisciplines(View v){
+
     }
 }
