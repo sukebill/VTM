@@ -74,6 +74,7 @@ public class MainPage extends AppCompatActivity {
     }
 
     public void openDisciplines(View v){
-
+        Intent intent = new Intent(this, Disciplines.class);
+        startActivity(intent);
     }
 }
