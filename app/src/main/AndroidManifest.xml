@@ -63,6 +63,14 @@
         <activity
             android:name="vampire.ClanInfo"
             android:label="@string/title_activity_clan_info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="vampire.Disciplines"
+            android:label="@string/title_activity_disciplines"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.threemenstudio.DisciplineInfo"
+            android:label="@string/title_activity_discipline_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
