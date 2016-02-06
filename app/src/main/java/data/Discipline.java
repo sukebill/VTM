@@ -11,6 +11,7 @@ public class Discipline {
     private String officialAbilities;
     private String rituals;
     private String ritualsSystem;
+    private String subtitle;
 
     public int getId() {
         return id;
@@ -82,5 +83,13 @@ public class Discipline {
 
     public void setRitualsSystem(String ritualsSystem) {
         this.ritualsSystem = ritualsSystem;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 }
