@@ -318,8 +318,8 @@
     <string name="advanced_rituals">Advanced Rituals</string>
     <string name="title_activity_clans">Clans</string>
     <string name="title_activity_clan_info">Clan Information</string>
-    <string name="title_activity_disciplines">disciplines</string>
-    <string name="title_activity_discipline_info">DisciplineInfo</string>
+    <string name="title_activity_disciplines">Disciplines</string>
+    <string name="title_activity_discipline_info">Discipline Information</string>
 
 
 </resources>
