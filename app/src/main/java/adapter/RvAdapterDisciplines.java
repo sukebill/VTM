@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.threemenstudio.DisciplineInfo;
+import vampire.DisciplineInfo;
 import com.threemenstudio.vampire.R;
 
 import java.util.List;
