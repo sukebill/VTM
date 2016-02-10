@@ -71,7 +71,15 @@
         <activity
             android:name="vampire.DisciplineInfo"
             android:label="@string/title_activity_discipline_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/Disciplines.NoActionBar" />
+        <activity
+            android:name="vampire.DisciplineAbilities"
+            android:label="@string/title_activity_discipline_abilities"
+            android:theme="@style/Abilities.NoActionBar" />
+        <activity
+            android:name="vampire.DisciplinePaths"
+            android:label="@string/title_activity_discipline_paths"
+            android:theme="@style/Paths.NoActionBar"/>
     </application>
 
 </manifest>

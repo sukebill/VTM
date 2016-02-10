@@ -3,6 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#e75128</color>
+    <color name="colorPrimaryAbilities">#ffcc0000</color>
+    <color name="colorPrimaryDarkAbilities">#a40000</color>
+    <color name="AccentAbilities">#ffcc0000</color>
+    <color name="colorPrimaryPaths">#ff0099cc</color>
+    <color name="colorPrimaryDarkPaths">#0080ab</color>
+    <color name="AccentPaths">#ff0099cc</color>
     <color name="border">#7f000000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

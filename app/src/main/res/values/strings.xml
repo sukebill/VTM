@@ -320,6 +320,9 @@
     <string name="title_activity_clan_info">Clan Information</string>
     <string name="title_activity_disciplines">Disciplines</string>
     <string name="title_activity_discipline_info">Discipline Information</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_discipline_abilities">DisciplineAbilities</string>
+    <string name="title_activity_discipline_paths">DisciplinePaths</string>
 
 
 </resources>

@@ -9,6 +9,7 @@ public class Ability {
     private String description;
     private String system;
     private int level;
+    private boolean child;
 
     public int getId() {
         return id;
@@ -56,5 +57,13 @@ public class Ability {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public boolean isChild() {
+        return child;
+    }
+
+    public void setChild(boolean child) {
+        this.child = child;
     }
 }
