@@ -6,4 +6,5 @@ public class Constants {
     public static final String EXTRA_DISCIPLINE = "vtm.discipline";
     public static final String EXTRA_TITLE = "VTM.TITLE";
     public static final String EXTRA_OFFICIAL = "vtm.official";
+    public static final String EXTRA_PATH = "vtm.path";
 }
