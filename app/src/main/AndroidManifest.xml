@@ -87,7 +87,15 @@
         <activity
             android:name="vampire.SetiteSorceryPaths"
             android:label="@string/title_activity_setite_sorcery"
-            android:theme="@style/Paths.NoActionBar"/>
+            android:theme="@style/Paths.NoActionBar" />
+        <activity
+            android:name="vampire.DisciplineRituals"
+            android:label="@string/title_activity_discipline_rituals2"
+            android:theme="@style/Rituals.NoActionBar" />
+        <activity
+            android:name="vampire.SetiteSorceryRituals"
+            android:label="@string/title_activity_setite_sorcery_rituals"
+            android:theme="@style/Rituals.NoActionBar"/>
     </application>
 
 </manifest>

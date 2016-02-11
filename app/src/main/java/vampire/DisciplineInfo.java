@@ -233,6 +233,24 @@ public class DisciplineInfo extends AppCompatActivity {
             if(rituals.size() > 0){
                 Button fabRituals = (Button) rootView.findViewById(R.id.fab_rituals);
                 fabRituals.setVisibility(View.VISIBLE);
+                fabRituals.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (discipline.getTitle().equals("Setite Sorcery")) {
+                            Intent intent = new Intent(context, SetiteSorceryRituals.class);
+                            intent.putExtra(Constants.EXTRA_DISCIPLINE, String.valueOf(discipline.getId()));
+                            intent.putExtra(Constants.EXTRA_TITLE, discipline.getTitle());
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(context, DisciplineRituals.class);
+                            intent.putExtra(Constants.EXTRA_DISCIPLINE, String.valueOf(discipline.getId()));
+                            intent.putExtra(Constants.EXTRA_TITLE, discipline.getTitle());
+                            intent.putExtra(Constants.EXTRA_RITUAL, discipline.getRituals());
+                            intent.putExtra(Constants.EXTRA_RITUAL_SYSTEM, discipline.getRitualsSystem());
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
 
             return rootView;

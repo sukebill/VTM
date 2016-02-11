@@ -23,8 +23,6 @@ import database.VtmDb;
 
 public class DisciplinePaths extends AppCompatActivity {
 
-    private static String discipline;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +35,7 @@ public class DisciplinePaths extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String disciplineId = extras.getString(Constants.EXTRA_DISCIPLINE);
-        discipline = extras.getString(Constants.EXTRA_TITLE);
+        String discipline = extras.getString(Constants.EXTRA_TITLE);
         String official = extras.getString(Constants.EXTRA_OFFICIAL);
 
         getSupportActionBar().setTitle(discipline);

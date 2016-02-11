@@ -325,6 +325,9 @@
     <string name="title_activity_discipline_paths">DisciplinePaths</string>
     <string name="title_activity_path_info">PathInfo</string>
     <string name="title_activity_setite_sorcery">SetiteSorcery</string>
+    <string name="title_activity_discipline_rituals">DisciplineRituals</string>
+    <string name="title_activity_discipline_rituals2">DisciplineRituals2</string>
+    <string name="title_activity_setite_sorcery_rituals">SetiteSorceryRituals</string>
 
 
 </resources>

@@ -7,4 +7,6 @@ public class Constants {
     public static final String EXTRA_TITLE = "VTM.TITLE";
     public static final String EXTRA_OFFICIAL = "vtm.official";
     public static final String EXTRA_PATH = "vtm.path";
+    public static final String EXTRA_RITUAL = "vtm.ritual";
+    public static final String EXTRA_RITUAL_SYSTEM = "vtm.ritual.system";
 }

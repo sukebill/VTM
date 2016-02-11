@@ -4,43 +4,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.threemenstudio.vampire.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import data.Constants;
-import data.Path;
+import data.Ritual;
 import data.Sorcery;
 import database.DbHelper;
 import database.VtmDb;
 
-public class SetiteSorceryPaths extends AppCompatActivity {
+public class SetiteSorceryRituals extends AppCompatActivity {
 
     private static List<Sorcery> sorceries;
     private static Context context;
+    private static LinkedHashMap<String,List<Boolean>> opened;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setite_sorcery);
+        setContentView(R.layout.activity_setite_sorcery_rituals);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,6 +60,8 @@ public class SetiteSorceryPaths extends AppCompatActivity {
         String discipline = extras.getString(Constants.EXTRA_TITLE);
 
         getSupportActionBar().setTitle(discipline);
+
+        opened = new LinkedHashMap<>();
 
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db;
@@ -65,7 +75,6 @@ public class SetiteSorceryPaths extends AppCompatActivity {
         }catch(SQLException sqle){
             sqle.printStackTrace();
         }
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         /*
@@ -95,7 +104,7 @@ public class SetiteSorceryPaths extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_setite_sorcery, menu);
+        getMenuInflater().inflate(R.menu.menu_setite_sorcery_rituals, menu);
         return true;
     }
 
@@ -142,133 +151,106 @@ public class SetiteSorceryPaths extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_setite_sorcery, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_setite_sorcery_rituals, container, false);
             final int message = getArguments().getInt(ARG_SECTION_NUMBER);
             ((TextView)rootView.findViewById(R.id.desc)).setText(sorceries.get(message).getDesc());
-            if(sorceries.get(message).getSocial() == null){
-                rootView.findViewById(R.id.social).setVisibility(View.GONE);
+            if(sorceries.get(message).getRituals() == null){
+                rootView.findViewById(R.id.ritual).setVisibility(View.GONE);
             }
             else{
-                ((TextView)rootView.findViewById(R.id.social_desc)).setText(sorceries.get(message).getSocial());
+                ((TextView)rootView.findViewById(R.id.desc)).setText(sorceries.get(message).getRituals());
+            }
+            if(sorceries.get(message).getRitualPractice() == null){
+                rootView.findViewById(R.id.ritual_practice).setVisibility(View.GONE);
+            }
+            else{
+                ((TextView)rootView.findViewById(R.id.practice_desc)).setText(sorceries.get(message).getRitualPractice());
             }
 
-            setPaths(rootView, message);
-
-            return rootView;
-        }
-
-        private void setPaths(View rootView, int message){
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db;
-            List<Path> paths = new ArrayList<>();
+            LinkedHashMap<Integer, List<Ritual>> hashMap = new LinkedHashMap<>();
             try {
                 dbHelper.openDataBase();
                 db = dbHelper.getReadableDatabase();
                 VtmDb vtmDb = new VtmDb();
-                paths = vtmDb.getPathsOfSorcery(db, sorceries.get(message).getId());
+                int maxLevel = vtmDb.getMaxLevelOfRitualsForSorcery(db, sorceries.get(message).getId());
+                for(int i = 0; i < maxLevel + 1; i++){
+                    //hashMap.put(i, vtmDb.getRitualOfSetiteSorceryByLevel(db, sorceries.get(message).getId(), i));
+                    List<Ritual> rituals = vtmDb.getRitualOfSetiteSorceryByLevel(db, sorceries.get(message).getId(), i);
+                    if(rituals.size() > 0){
+                        //lets create a layout
+                        setManyRituals(rituals, rootView, message, String.valueOf(i));
+                    }
+                }
                 dbHelper.close();
             }catch(SQLException sqle){
                 sqle.printStackTrace();
             }
-            for(int i = 0; i < paths.size(); i++){
-                LinearLayout path = (LinearLayout) LinearLayout.inflate(context, R.layout.path, null);
-                TextView title = (TextView) path.findViewById(R.id.title);
-                String[] name = paths.get(i).getName().split(" - ");
-                if(message == 0){
-                    setAkhu(name, title);
+
+            return rootView;
+        }
+
+        private void setManyRituals(List<Ritual> rituals, View rootView, final int message, final String j){
+            final List<Boolean> list = new ArrayList<>();
+            LinearLayout level = (LinearLayout) LinearLayout.inflate(context, R.layout.level, null);
+            for(int i = 0; i < rituals.size(); i++) {
+                list.add(false);
+                final String key = message + j;
+                final LinearLayout ritual = (LinearLayout) LinearLayout.inflate(context, R.layout.ritual_of_sorcery, null);
+                TextView title = (TextView) ritual.findViewById(R.id.title);
+                title.setText(rituals.get(i).getName());
+                final LinearLayout child = (LinearLayout) ritual.findViewById(R.id.child);
+                if(opened.containsKey(key)){
+                    if(opened.get(key).get(i)){
+                        child.setVisibility(View.VISIBLE);
+                    }
+                    else{
+                        child.setVisibility(View.GONE);
+                    }
                 }
-                if(message == 1){
-                    setSadhana(name, title);
+                else{
+                    child.setVisibility(View.GONE);
                 }
-                if(message == 2){
-                    setWanga(name, title);
+                TextView desc = (TextView) ritual.findViewById(R.id.desc);
+                desc.setText(rituals.get(i).getDescription());
+                TextView systemDesc = (TextView) ritual.findViewById(R.id.system_desc);
+                systemDesc.setText(rituals.get(i).getSystem());
+                if(rituals.get(i).getSystem() == null){
+                    (ritual.findViewById(R.id.system)).setVisibility(View.GONE);
+                    (ritual.findViewById(R.id.system_desc)).setVisibility(View.GONE);
                 }
-                LinearLayout header = (LinearLayout) path.findViewById(R.id.header);
-                final int id = paths.get(i).getId();
+                LinearLayout header = (LinearLayout) ritual.findViewById(R.id.header);
+                final int finalI = i;
                 header.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(context, PathInfo.class);
-                        intent.putExtra(Constants.EXTRA_PATH, String.valueOf(id));
-                        startActivity(intent);
+                        if (opened.get(key).get(finalI)) {
+                            child.setVisibility(View.GONE);
+                            opened.get(key).set(finalI, false);
+                            ((ImageView) ritual.findViewById(R.id.arrow)).setImageResource(android.R.drawable.arrow_down_float);
+                        } else {
+                            child.setVisibility(View.VISIBLE);
+                            opened.get(key).set(finalI, true);
+                            ((ImageView) ritual.findViewById(R.id.arrow)).setImageResource(android.R.drawable.arrow_up_float);
+                        }
                     }
                 });
-                LinearLayout scrollView = (LinearLayout) rootView.findViewById(R.id.scroller);
-                scrollView.addView(path);
+                level.addView(ritual);
+            }
+            if(Integer.parseInt(j) == 0){
+                ((TextView)level.findViewById(R.id.level)).setText("Variable Level");
+            }
+            else{
+                ((TextView)level.findViewById(R.id.level)).setText("Level " + j);
+            }
+            LinearLayout scrollView = (LinearLayout) rootView.findViewById(R.id.scroller);
+            scrollView.addView(level);
+            if(!opened.containsKey(message + j)){
+                opened.put(message + j, list);
             }
         }
 
-        private void setAkhu(String[] name , TextView title){
-            switch (name[0]) {
-                case "Jinn's Gift":
-                    title.setText(name[1]);
-                    break;
-                case "Echo of Nirvana":
-                    title.setText(name[2]);
-                    break;
-                case "Suleiman's Laws":
-                    title.setText(name[2]);
-                    break;
-                case "Weather Control":
-                    title.setText(name[1]);
-                    break;
-                default:
-                    title.setText(name[0]);
-                    break;
-            }
-        }
-
-        private void setSadhana(String[] name , TextView title){
-            switch (name[0]) {
-                case "Alchemy":
-                    title.setText(name[1]);
-                    break;
-                case "Hands of Destruction":
-                    title.setText(name[1]);
-                    break;
-                case "The Movement of the Mind":
-                    title.setText(name[1]);
-                    break;
-                case "The Snake Inside":
-                    title.setText(name[1]);
-                    break;
-                case "Suleiman's Laws":
-                    title.setText(name[3]);
-                    break;
-                case "Weather Control":
-                    title.setText(name[1]);
-                    break;
-                case "Jinn's Gift":
-                    title.setText(name[1]);
-                    break;
-                default:
-                    title.setText(name[0]);
-                    break;
-            }
-        }
-
-        private void setWanga(String[] name , TextView title){
-            switch (name[0]) {
-                case "Jinn's Gift":
-                    title.setText(name[1]);
-                    break;
-                case "Life's Water":
-                    title.setText(name[1]);
-                    break;
-                case "The False Heart":
-                    title.setText(name[1]);
-                    break;
-                case "Suleiman's Laws":
-                    title.setText(name[1]);
-                    break;
-                case "Sebau's Touch":
-                    title.setText(name[1]);
-                    break;
-                default:
-                    title.setText(name[0]);
-                    break;
-            }
-        }
     }
 
     /**

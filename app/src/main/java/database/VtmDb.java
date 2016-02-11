@@ -12,6 +12,7 @@ import data.Clan;
 import data.Discipline;
 import data.Path;
 import data.Ritual;
+import data.Sorcery;
 
 public class VtmDb {
 
@@ -23,6 +24,7 @@ public class VtmDb {
     private static final String TABLE_PATHS = "paths";
     private static final String TABLE_RELATION_D_R = "relation_d_r";
     private static final String TABLE_RITUALS = "rituals";
+    private static final String TABLE_SORCERIES = "sorceries";
 
     public List<Discipline> getDisciplines(SQLiteDatabase db){
         List<Discipline> disciplines = new ArrayList<>();
@@ -180,6 +182,20 @@ public class VtmDb {
         return ability;
     }
 
+    public List<Ability> getAbilitiesOfPath(SQLiteDatabase db, int id){
+        List<Ability> abilities = new ArrayList<>();
+        String query = "SELECT  distinct ability_id FROM " + TABLE_RELATION_A_D_P + " WHERE path_id="
+                + id;
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                abilities.add(getAbilityById(db, cursor.getInt(0)));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return abilities;
+    }
+
     public List<Clan> getInclan(SQLiteDatabase db, int id){
         List<Clan> clans = new ArrayList<>();
         String query = "SELECT  id_clan FROM " + TABLE_CLAN_DISCIPLINES + " WHERE id_discipline=" + id;
@@ -195,16 +211,68 @@ public class VtmDb {
 
     public List<Path> getPathsOfDiscipline(SQLiteDatabase db, int id){
         List<Path> paths = new ArrayList<>();
-        String query = "SELECT  distinct path_id FROM " + TABLE_RELATION_A_D_P + " WHERE discipline_id="
-                + id + " AND path_id!=" + 0;
+        String query = "select * from " + TABLE_PATHS + " where id in(SELECT  distinct path_id FROM "
+                + TABLE_RELATION_A_D_P + " WHERE discipline_id="
+                + id + " AND path_id!=" + 0 + ") order by name";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                paths.add(getPathById(db, cursor.getInt(0)));
+                Path path = new Path();
+                path.setId(cursor.getInt(0));
+                path.setName(cursor.getString(1));
+                path.setAttribute(cursor.getString(2));
+                path.setDescription(cursor.getString(3));
+                path.setSystem(cursor.getString(4));
+                path.setOfficial(cursor.getString(5));
+                path.setPrice(cursor.getString(6));
+                paths.add(path);
             } while (cursor.moveToNext());
         }
         cursor.close();
         return paths;
+    }
+
+    public List<Path> getPathsOfSorcery(SQLiteDatabase db, int id){
+        List<Path> paths = new ArrayList<>();
+        String query = "select * from " + TABLE_PATHS + " where id in(SELECT  distinct path_id FROM "
+                + TABLE_RELATION_A_D_P + " WHERE sorcery_id="
+                + id + " AND path_id!=" + 0 + ") order by name";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Path path = new Path();
+                path.setId(cursor.getInt(0));
+                path.setName(cursor.getString(1));
+                path.setAttribute(cursor.getString(2));
+                path.setDescription(cursor.getString(3));
+                path.setSystem(cursor.getString(4));
+                path.setOfficial(cursor.getString(5));
+                path.setPrice(cursor.getString(6));
+                paths.add(path);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return paths;
+    }
+
+    public List<Sorcery> getSetiteSorceries(SQLiteDatabase db){
+        List<Sorcery> sorceries = new ArrayList<>();
+        String query = "SELECT  * FROM " + TABLE_SORCERIES;
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Sorcery sorcery = new Sorcery();
+                sorcery.setId(cursor.getInt(0));
+                sorcery.setName(cursor.getString(1));
+                sorcery.setDesc(cursor.getString(2));
+                sorcery.setSocial(cursor.getString(3));
+                sorcery.setRitualPractice(cursor.getString(4));
+                sorcery.setRituals(cursor.getString(5));
+                sorceries.add(sorcery);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return sorceries;
     }
 
     public Path getPathById(SQLiteDatabase db, int id){
@@ -220,16 +288,25 @@ public class VtmDb {
             path.setOfficial(cursor.getString(5));
             path.setPrice(cursor.getString(6));
         }
+        cursor.close();
         return path;
     }
 
-    public List<Ritual> getRitualsOfDiscipline(SQLiteDatabase db, int id){
+    public List<Ritual> getRitualsOfDisciplineByLevel(SQLiteDatabase db, int id, int level){
         List<Ritual> rituals = new ArrayList<>();
-        String query = "SELECT  ritual_id FROM " + TABLE_RELATION_D_R + " WHERE discipline_id=" + id;
+        String query = "SELECT  * FROM " + TABLE_RITUALS + " WHERE id in (SELECT  ritual_id FROM "
+                + TABLE_RELATION_D_R + " WHERE discipline_id=" + id + ") and level=" + level;
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                rituals.add(getRitualById(db, cursor.getInt(0)));
+                Ritual ritual = new Ritual();
+                ritual.setId(cursor.getInt(0));
+                ritual.setName(cursor.getString(1));
+                ritual.setDescription(cursor.getString(2));
+                ritual.setSystem(cursor.getString(3));
+                ritual.setLevel(cursor.getInt(4));
+                ritual.setSide(cursor.getString(5));
+                rituals.add(ritual);
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -256,6 +333,30 @@ public class VtmDb {
         int maxLevel = 0;
         String query = "select max(level) from " + TABLE_ABILITIES + " where id in " +
                 "( select ability_id from " + TABLE_RELATION_A_D_P + " where discipline_id=" + id + ")";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            maxLevel = cursor.getInt(0);
+        }
+        cursor.close();
+        return maxLevel;
+    }
+
+    public int getMaxLevelOfRitualsForDiscipline(SQLiteDatabase db, int id){
+        int maxLevel = 0;
+        String query = "select max(level) from " + TABLE_RITUALS + " where id in " +
+                "( select ritual_id from " + TABLE_RELATION_D_R + " where discipline_id=" + id + ")";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            maxLevel = cursor.getInt(0);
+        }
+        cursor.close();
+        return maxLevel;
+    }
+
+    public int getMaxLevelOfRitualsForSorcery(SQLiteDatabase db, int id){
+        int maxLevel = 0;
+        String query = "select max(level) from " + TABLE_RITUALS + " where id in " +
+                "( select ritual_id from " + TABLE_RELATION_D_R + " where sorcery_id=" + id + ")";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             maxLevel = cursor.getInt(0);
@@ -297,4 +398,46 @@ public class VtmDb {
         return abilities;
     }
 
+    public List<Ritual> getRitualsOfDiscipline(SQLiteDatabase db, int id) {
+        List<Ritual> rituals = new ArrayList<>();
+        String query = "SELECT  * FROM " + TABLE_RITUALS + " WHERE id in (SELECT  ritual_id FROM "
+                + TABLE_RELATION_D_R + " WHERE discipline_id=" + id + ")";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Ritual ritual = new Ritual();
+                ritual.setId(cursor.getInt(0));
+                ritual.setName(cursor.getString(1));
+                ritual.setDescription(cursor.getString(2));
+                ritual.setSystem(cursor.getString(3));
+                ritual.setLevel(cursor.getInt(4));
+                ritual.setSide(cursor.getString(5));
+                rituals.add(ritual);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return rituals;
+    }
+
+    public List<Ritual> getRitualOfSetiteSorceryByLevel(SQLiteDatabase db, int id, int level){
+        List<Ritual> rituals = new ArrayList<>();
+        String query = "select * from " + TABLE_RITUALS + " where id in(SELECT  distinct ritual_id FROM "
+                + TABLE_RELATION_D_R + " WHERE sorcery_id="
+                + id + ") and level=" + level + " order by name";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Ritual ritual = new Ritual();
+                ritual.setId(cursor.getInt(0));
+                ritual.setName(cursor.getString(1));
+                ritual.setDescription(cursor.getString(2));
+                ritual.setSystem(cursor.getString(3));
+                ritual.setLevel(cursor.getInt(4));
+                ritual.setSide(cursor.getString(5));
+                rituals.add(ritual);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return rituals;
+    }
 }
