@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -155,7 +156,7 @@ public class DisciplineAbilities extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_discipline_abilities, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_discipline_abilities, container, false);
             int message;
             if(discipline.equals("Celerity") | discipline.equals("Fortitude") | discipline.equals("Potence")){
                 message = getArguments().getInt(ARG_SECTION_NUMBER) + minLevel - 1;
@@ -196,6 +197,7 @@ public class DisciplineAbilities extends AppCompatActivity {
                 if(abilities.get(0).getSystem() == null){
                     (ability.findViewById(R.id.system)).setVisibility(View.GONE);
                 }
+                ability.findViewById(R.id.arrow).setVisibility(View.GONE);
                 LinearLayout scrollView = (LinearLayout) rootView.findViewById(R.id.abilities);
                 scrollView.addView(ability);
             }
@@ -203,7 +205,7 @@ public class DisciplineAbilities extends AppCompatActivity {
                 final List<Boolean> list = new ArrayList<>();
                 for(int i = 0; i < abilities.size(); i++){
                     list.add(false);
-                    LinearLayout ability = (LinearLayout) LinearLayout.inflate(context, R.layout.ability, null);
+                    final LinearLayout ability = (LinearLayout) LinearLayout.inflate(context, R.layout.ability, null);
                     TextView title = (TextView) ability.findViewById(R.id.title);
                     title.setText(abilities.get(i).getTitle());
                     final LinearLayout child = (LinearLayout) ability.findViewById(R.id.child);
@@ -234,9 +236,11 @@ public class DisciplineAbilities extends AppCompatActivity {
                             if (opened.get(trueMessage).get(finalI)) {
                                 child.setVisibility(View.GONE);
                                 opened.get(trueMessage).set(finalI, false);
+                                ((ImageView)ability.findViewById(R.id.arrow)).setImageResource(android.R.drawable.arrow_down_float);
                             } else {
                                 child.setVisibility(View.VISIBLE);
                                 opened.get(trueMessage).set(finalI, true);
+                                ((ImageView)ability.findViewById(R.id.arrow)).setImageResource(android.R.drawable.arrow_up_float);
                             }
                         }
                     });

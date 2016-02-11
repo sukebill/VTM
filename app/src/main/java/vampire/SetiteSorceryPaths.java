@@ -4,21 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.threemenstudio.vampire.R;
@@ -26,24 +26,22 @@ import com.threemenstudio.vampire.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import data.Ability;
-import data.Clan;
 import data.Constants;
-import data.Discipline;
 import data.Path;
-import data.Ritual;
+import data.Sorcery;
 import database.DbHelper;
 import database.VtmDb;
+import vampire.PathInfo;
 
-public class DisciplineInfo extends AppCompatActivity {
+public class SetiteSorceryPaths extends AppCompatActivity {
 
+    private static List<Sorcery> sorceries;
     private static Context context;
-    private static List<Discipline> disciplines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_discipline_info);
+        setContentView(R.layout.activity_setite_sorcery);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,16 +50,18 @@ public class DisciplineInfo extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String disciplineId = extras.getString(Constants.EXTRA_DISCIPLINE);
+        String discipline = extras.getString(Constants.EXTRA_TITLE);
+
+        getSupportActionBar().setTitle(discipline);
 
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db;
-        disciplines = new ArrayList<>();
+        sorceries = new ArrayList<>();
         try {
             dbHelper.openDataBase();
             db = dbHelper.getReadableDatabase();
             VtmDb vtmDb = new VtmDb();
-            disciplines = vtmDb.getDisciplinesInfo(db);
+            sorceries = vtmDb.getSetiteSorceries(db);
             dbHelper.close();
         }catch(SQLException sqle){
             sqle.printStackTrace();
@@ -85,9 +85,10 @@ public class DisciplineInfo extends AppCompatActivity {
      */
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        if (disciplineId != null) {
-            mViewPager.setCurrentItem(Integer.parseInt(disciplineId));
-        }
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.Accent));
 
     }
 
@@ -95,7 +96,7 @@ public class DisciplineInfo extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_discipline_info, menu);
+        getMenuInflater().inflate(R.menu.menu_setite_sorcery, menu);
         return true;
     }
 
@@ -142,100 +143,132 @@ public class DisciplineInfo extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_discipline_info, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_setite_sorcery, container, false);
             final int message = getArguments().getInt(ARG_SECTION_NUMBER);
-            final Discipline discipline = disciplines.get(message);
-            TextView textView = (TextView) rootView.findViewById(R.id.discipline);
-            textView.setText(discipline.getTitle());
-            TextView desc = (TextView) rootView.findViewById(R.id.desc);
-            desc.setText(discipline.getDescription());
-            TextView bonusDesc = (TextView) rootView.findViewById(R.id.bonus_desc);
-            if(discipline.getBonusDescription() != null){
-                bonusDesc.setText(discipline.getBonusDescription());
+            ((TextView)rootView.findViewById(R.id.desc)).setText(sorceries.get(message).getDesc());
+            if(sorceries.get(message).getSocial() == null){
+                rootView.findViewById(R.id.social).setVisibility(View.GONE);
             }
             else{
-                bonusDesc.setVisibility(View.GONE);
+                ((TextView)rootView.findViewById(R.id.social_desc)).setText(sorceries.get(message).getSocial());
             }
 
+            setPaths(rootView, message);
+
+            return rootView;
+        }
+
+        private void setPaths(View rootView, int message){
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db;
-            List<Ability> abilities = new ArrayList<>();
-            List<Clan> clans = new ArrayList<>();
             List<Path> paths = new ArrayList<>();
-            List<Ritual> rituals = new ArrayList<>();
             try {
                 dbHelper.openDataBase();
                 db = dbHelper.getReadableDatabase();
                 VtmDb vtmDb = new VtmDb();
-                clans = vtmDb.getInclan(db, discipline.getId());
-                abilities = vtmDb.getAbilitiesOfDiscipline(db, discipline.getId());
-                paths = vtmDb.getPathsOfDiscipline(db, discipline.getId());
-                rituals = vtmDb.getRitualsOfDiscipline(db, discipline.getId());
+                paths = vtmDb.getPathsOfSorcery(db, sorceries.get(message).getId());
                 dbHelper.close();
             }catch(SQLException sqle){
                 sqle.printStackTrace();
             }
-
-            for(int i = 1; i < clans.size() + 1; i++){
-                String clanDiscipline = "clan_" + i;
-                TextView inClan  = (TextView) rootView.findViewById(context.getResources().getIdentifier(clanDiscipline
-                        , "id", context.getPackageName()));
-                if(clans.get(i -1).getCaste() != null){
-                    inClan.setText(clans.get(i - 1).getCaste());
+            for(int i = 0; i < paths.size(); i++){
+                LinearLayout path = (LinearLayout) LinearLayout.inflate(context, R.layout.path, null);
+                TextView title = (TextView) path.findViewById(R.id.title);
+                String[] name = paths.get(i).getName().split(" - ");
+                if(message == 0){
+                    setAkhu(name, title);
                 }
-                else{
-                    inClan.setText(clans.get(i - 1).getClan());
+                if(message == 1){
+                    setSadhana(name, title);
                 }
-                inClan.setVisibility(View.VISIBLE);
-            }
-            if(clans.size() == 0){
-                rootView.findViewById(R.id.clan).setVisibility(View.GONE);
-            }
-
-            if(abilities.size() > 0){
-                Button fabAbilities = (Button) rootView.findViewById(R.id.fab_abilities);
-                fabAbilities.setVisibility(View.VISIBLE);
-                fabAbilities.setOnClickListener(new View.OnClickListener() {
+                if(message == 2){
+                    setWanga(name, title);
+                }
+                LinearLayout header = (LinearLayout) path.findViewById(R.id.header);
+                final int id = paths.get(i).getId();
+                header.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(context, DisciplineAbilities.class);
-                        intent.putExtra(Constants.EXTRA_DISCIPLINE, String.valueOf(discipline.getId()));
-                        intent.putExtra(Constants.EXTRA_TITLE, discipline.getTitle());
-                        intent.putExtra(Constants.EXTRA_OFFICIAL, discipline.getOfficialAbilities());
+                        Intent intent = new Intent(context, PathInfo.class);
+                        intent.putExtra(Constants.EXTRA_PATH, String.valueOf(id));
                         startActivity(intent);
                     }
                 });
+                LinearLayout scrollView = (LinearLayout) rootView.findViewById(R.id.scroller);
+                scrollView.addView(path);
             }
+        }
 
-            if(paths.size() > 0){
-                Button fabPaths = (Button) rootView.findViewById(R.id.fab_paths);
-                fabPaths.setVisibility(View.VISIBLE);
-                fabPaths.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(discipline.getTitle().equals("Setite Sorcery")){
-                            Intent intent = new Intent(context, SetiteSorceryPaths.class);
-                            intent.putExtra(Constants.EXTRA_DISCIPLINE, String.valueOf(discipline.getId()));
-                            intent.putExtra(Constants.EXTRA_TITLE, discipline.getTitle());
-                            startActivity(intent);
-                        }
-                        else{
-                            Intent intent = new Intent(context, DisciplinePaths.class);
-                            intent.putExtra(Constants.EXTRA_DISCIPLINE, String.valueOf(discipline.getId()));
-                            intent.putExtra(Constants.EXTRA_TITLE, discipline.getTitle());
-                            intent.putExtra(Constants.EXTRA_OFFICIAL, discipline.getOfficialAbilities());
-                            startActivity(intent);
-                        }
-                    }
-                });
+        private void setAkhu(String[] name , TextView title){
+            switch (name[0]) {
+                case "Jinn's Gift":
+                    title.setText(name[1]);
+                    break;
+                case "Echo of Nirvana":
+                    title.setText(name[2]);
+                    break;
+                case "Suleiman's Laws":
+                    title.setText(name[2]);
+                    break;
+                case "Weather Control":
+                    title.setText(name[1]);
+                    break;
+                default:
+                    title.setText(name[0]);
+                    break;
             }
+        }
 
-            if(rituals.size() > 0){
-                Button fabRituals = (Button) rootView.findViewById(R.id.fab_rituals);
-                fabRituals.setVisibility(View.VISIBLE);
+        private void setSadhana(String[] name , TextView title){
+            switch (name[0]) {
+                case "Alchemy":
+                    title.setText(name[1]);
+                    break;
+                case "Hands of Destruction":
+                    title.setText(name[1]);
+                    break;
+                case "The Movement of the Mind":
+                    title.setText(name[1]);
+                    break;
+                case "The Snake Inside":
+                    title.setText(name[1]);
+                    break;
+                case "Suleiman's Laws":
+                    title.setText(name[3]);
+                    break;
+                case "Weather Control":
+                    title.setText(name[1]);
+                    break;
+                case "Jinn's Gift":
+                    title.setText(name[1]);
+                    break;
+                default:
+                    title.setText(name[0]);
+                    break;
             }
+        }
 
-            return rootView;
+        private void setWanga(String[] name , TextView title){
+            switch (name[0]) {
+                case "Jinn's Gift":
+                    title.setText(name[1]);
+                    break;
+                case "Life's Water":
+                    title.setText(name[1]);
+                    break;
+                case "The False Heart":
+                    title.setText(name[1]);
+                    break;
+                case "Suleiman's Laws":
+                    title.setText(name[1]);
+                    break;
+                case "Sebau's Touch":
+                    title.setText(name[1]);
+                    break;
+                default:
+                    title.setText(name[0]);
+                    break;
+            }
         }
     }
 
@@ -258,12 +291,13 @@ public class DisciplineInfo extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return disciplines.size();
+            // Show 3 total pages.
+            return sorceries.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return disciplines.get(position).getTitle();
+            return sorceries.get(position).getName();
         }
     }
 }

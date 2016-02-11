@@ -9,6 +9,10 @@
     <color name="colorPrimaryPaths">#ff0099cc</color>
     <color name="colorPrimaryDarkPaths">#0080ab</color>
     <color name="AccentPaths">#ff0099cc</color>
+    <color name="colorPrimaryRituals">#ffaa66cc</color>
+    <color name="colorPrimaryDarkRituals">#FF8952A4</color>
+    <color name="AccentRituals">#ffaa66cc</color>
+    <color name="Accent">#ffffbb33</color>
     <color name="border">#7f000000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

@@ -323,6 +323,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_discipline_abilities">DisciplineAbilities</string>
     <string name="title_activity_discipline_paths">DisciplinePaths</string>
+    <string name="title_activity_path_info">PathInfo</string>
+    <string name="title_activity_setite_sorcery">SetiteSorcery</string>
 
 
 </resources>

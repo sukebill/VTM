@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -25,6 +23,8 @@ import database.VtmDb;
 
 public class DisciplinePaths extends AppCompatActivity {
 
+    private static String discipline;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +32,12 @@ public class DisciplinePaths extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Context context = this;
+        final Context context = this;
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String disciplineId = extras.getString(Constants.EXTRA_DISCIPLINE);
-        String discipline = extras.getString(Constants.EXTRA_TITLE);
+        discipline = extras.getString(Constants.EXTRA_TITLE);
         String official = extras.getString(Constants.EXTRA_OFFICIAL);
 
         getSupportActionBar().setTitle(discipline);
@@ -65,12 +65,69 @@ public class DisciplinePaths extends AppCompatActivity {
         for(int i = 0; i < paths.size(); i++){
             LinearLayout path = (LinearLayout) LinearLayout.inflate(context, R.layout.path, null);
             TextView title = (TextView) path.findViewById(R.id.title);
-            title.setText(paths.get(i).getName());
+            String[] name = paths.get(i).getName().split(" - ");
+            switch (discipline) {
+                case "Assamite Sorcery":
+                    title.setText(name[0]);
+                    break;
+                case "Thaumaturgy":
+                    switch (name[0]) {
+                        case "Yaksha-Vidya":
+                            title.setText(name[1]);
+                            break;
+                        case "Echo of Nirvana":
+                            title.setText(name[1]);
+                            break;
+                        case "Hand of the Magi":
+                            title.setText(name[1]);
+                            break;
+                        case "Vengeance of Khnum":
+                            title.setText(name[1]);
+                            break;
+                        case "Covenant of Enki":
+                            title.setText(name[1]);
+                            break;
+                        case "Lakshimi's Wishes":
+                            title.setText(name[1]);
+                            break;
+                        case "Life's Water":
+                            title.setText(name[1]);
+                            break;
+                        case "Jinn's Gift":
+                            title.setText(name[1]);
+                            break;
+                        case "The False Heart":
+                            title.setText(name[1]);
+                            break;
+                        case "Sebau's Touch":
+                            title.setText(name[1]);
+                            break;
+                        case "Path of the Ailing Jackal":
+                            title.setText(name[1]);
+                            break;
+                        case "Valour of Sutekh":
+                            title.setText(name[1]);
+                            break;
+                        case "Suleiman's Laws":
+                            title.setText(name[1]);
+                            break;
+                        default:
+                            title.setText(name[0]);
+                            break;
+                    }
+                    break;
+                default:
+                    title.setText(paths.get(i).getName());
+                    break;
+            }
             LinearLayout header = (LinearLayout) path.findViewById(R.id.header);
+            final int id = paths.get(i).getId();
             header.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(context, PathInfo.class);
+                    intent.putExtra(Constants.EXTRA_PATH, String.valueOf(id));
+                    startActivity(intent);
                 }
             });
             LinearLayout scrollView = (LinearLayout) findViewById(R.id.paths);
