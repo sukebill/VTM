@@ -27,14 +27,14 @@ public class MainPage extends AppCompatActivity {
         collapsingToolbarLayout.setTitle("Vampire: The Masquerade");
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreateCharacterPlayerInfo.class);
                 startActivity(intent);
             }
-        });
+        });*/
         DbHelper dbHelper = new DbHelper(this);
         try {
             dbHelper.createDataBase();
@@ -78,5 +78,29 @@ public class MainPage extends AppCompatActivity {
     public void openDisciplines(View v){
         Intent intent = new Intent(this, Disciplines.class);
         startActivity(intent);
+    }
+
+    public void openSects(View v){
+
+    }
+
+    public void openMyCharacters(View v){
+
+    }
+
+    public void openNewCharacter(View v){
+
+    }
+
+    public void openComboDisciplines(View v){
+
+    }
+
+    public void openMeritsAndFlaws(View v){
+
+    }
+
+    public void openDerangements(View v){
+
     }
 }
