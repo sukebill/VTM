@@ -3,15 +3,17 @@
     package="com.threemenstudio.vampire">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/applogo"
+        android:name="com.threemenstudio.VTMApplication"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="vampire.MainPage"
+            android:name="com.threemenstudio.activities.MainPage"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,81 +23,86 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="vampire.CreateCharacterPlayerInfo"
+            android:name="com.threemenstudio.activities.CreateCharacterPlayerInfo"
             android:label="@string/title_activity_create_character"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="vampire.CreateCharacterAttributes"
+            android:name="com.threemenstudio.activities.CreateCharacterAttributes"
             android:label="@string/title_activity_create_character_attributes"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="vampire.CreateCharacterAbilities"
+            android:name="com.threemenstudio.activities.CreateCharacterAbilities"
             android:label="@string/title_activity_create_character_abilities"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="vampire.CreateCharacterAbilities2"
+            android:name="com.threemenstudio.activities.CreateCharacterAbilities2"
             android:label="@string/title_activity_create_character_abilities2"
-            android:parentActivityName="vampire.CreateCharacterAbilities"
+            android:parentActivityName="com.threemenstudio.activities.CreateCharacterAbilities"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="vampire.CreateCharacterAbilities" />
+                android:value="com.threemenstudio.activities.CreateCharacterAbilities" />
         </activity>
         <activity
-            android:name="vampire.CreateCharacterAbilities3"
+            android:name="com.threemenstudio.activities.CreateCharacterAbilities3"
             android:label="@string/title_activity_create_character_abilities3"
-            android:parentActivityName="vampire.CreateCharacterAbilities2"
+            android:parentActivityName="com.threemenstudio.activities.CreateCharacterAbilities2"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="vampire.CreateCharacterAbilities2" />
+                android:value="com.threemenstudio.activities.CreateCharacterAbilities2" />
         </activity>
         <activity
-            android:name="vampire.CreateCharacterAdvantages"
+            android:name="com.threemenstudio.activities.CreateCharacterAdvantages"
             android:label="@string/title_activity_create_character_advantages"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="vampire.Clans"
+            android:name="com.threemenstudio.activities.Clans"
             android:label="@string/title_activity_clans"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="vampire.ClanInfo"
+            android:name="com.threemenstudio.activities.ClanInfo"
             android:label="@string/title_activity_clan_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="vampire.Disciplines"
+            android:name="com.threemenstudio.activities.Disciplines"
             android:label="@string/title_activity_disciplines"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="vampire.DisciplineInfo"
+            android:name="com.threemenstudio.activities.DisciplineInfo"
             android:label="@string/title_activity_discipline_info"
             android:theme="@style/Disciplines.NoActionBar" />
         <activity
-            android:name="vampire.DisciplineAbilities"
+            android:name="com.threemenstudio.activities.DisciplineAbilities"
             android:label="@string/title_activity_discipline_abilities"
             android:theme="@style/Abilities.NoActionBar" />
         <activity
-            android:name="vampire.DisciplinePaths"
+            android:name="com.threemenstudio.activities.DisciplinePaths"
             android:label="@string/title_activity_discipline_paths"
             android:theme="@style/Paths.NoActionBar" />
         <activity
-            android:name="vampire.PathInfo"
+            android:name="com.threemenstudio.activities.PathInfo"
             android:label="@string/title_activity_path_info"
             android:theme="@style/Paths.NoActionBar" />
         <activity
-            android:name="vampire.SetiteSorceryPaths"
+            android:name="com.threemenstudio.activities.SetiteSorceryPaths"
             android:label="@string/title_activity_setite_sorcery"
             android:theme="@style/Paths.NoActionBar" />
         <activity
-            android:name="vampire.DisciplineRituals"
+            android:name="com.threemenstudio.activities.DisciplineRituals"
             android:label="@string/title_activity_discipline_rituals2"
             android:theme="@style/Rituals.NoActionBar" />
         <activity
-            android:name="vampire.SetiteSorceryRituals"
+            android:name="com.threemenstudio.activities.SetiteSorceryRituals"
             android:label="@string/title_activity_setite_sorcery_rituals"
             android:theme="@style/Rituals.NoActionBar"/>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="93ce924589821a780d01be57b557960e40fe04b5"
+            />
     </application>
 
 </manifest>
