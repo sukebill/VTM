@@ -1,47 +1,27 @@
 package com.threemenstudio.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.threemenstudio.VTMApplication;
 import com.threemenstudio.adapter.DisciplineInfoPageAdapter;
+import com.threemenstudio.data.Discipline;
+import com.threemenstudio.database.DbHelper;
+import com.threemenstudio.database.VtmDb;
+import com.threemenstudio.utilities.DepthPageTransformer;
 import com.threemenstudio.vampire.R;
+import com.threemenstudio.vampire.databinding.ActivityDisciplineInfoBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.threemenstudio.data.Ability;
-import com.threemenstudio.data.Clan;
-import com.threemenstudio.data.Discipline;
-import com.threemenstudio.data.Path;
-import com.threemenstudio.data.Ritual;
-import com.threemenstudio.database.DbHelper;
-import com.threemenstudio.database.VtmDb;
-import com.threemenstudio.vampire.databinding.ActivityDisciplineInfoBinding;
-
 public class DisciplineInfo extends AppCompatActivity {
-
-    private static Context context;
-    private static List<Discipline> disciplines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +31,13 @@ public class DisciplineInfo extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        context = this;
-
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String disciplineId = extras.getString(VTMApplication.getExtraDiscipline());
 
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db;
-        disciplines = new ArrayList<>();
+        List<Discipline> disciplines = new ArrayList<>();
         try {
             dbHelper.openDataBase();
             db = dbHelper.getReadableDatabase();
@@ -74,6 +52,7 @@ public class DisciplineInfo extends AppCompatActivity {
                 new DisciplineInfoPageAdapter(getSupportFragmentManager(), disciplines, this);
 
         binding.container.setAdapter(mSectionsPagerAdapter);
+        binding.container.setPageTransformer(true, new DepthPageTransformer());
         if (disciplineId != null) {
             binding.container.setCurrentItem(Integer.parseInt(disciplineId));
         }

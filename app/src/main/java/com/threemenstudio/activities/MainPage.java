@@ -10,9 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.crashlytics.android.Crashlytics;
 import com.threemenstudio.database.DbHelper;
 import com.threemenstudio.vampire.R;
 import com.threemenstudio.vampire.databinding.ActivityMainpageBinding;
+import io.fabric.sdk.android.Fabric;
 
 public class MainPage extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         ActivityMainpageBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_mainpage);
         if (binding.toolbarLayout != null) {
             binding.toolbarLayout.setTitle("Vampire: The Masquerade");

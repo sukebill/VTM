@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.threemenstudio.data.Ability;
 import com.threemenstudio.database.DbHelper;
 import com.threemenstudio.database.VtmDb;
-import com.threemenstudio.interfaces.DisciplineAbilitiesInterface;
+import com.threemenstudio.interfaces.PagerRadioButtonInterface;
 import com.threemenstudio.vampire.R;
 import com.threemenstudio.vampire.databinding.AbilityBinding;
 import com.threemenstudio.vampire.databinding.FragmentDisciplineAbilitiesBinding;
@@ -71,7 +71,7 @@ public class DisciplineAbilitiesFragment extends Fragment {
         }
         final int trueMessage = message;
 
-        ((DisciplineAbilitiesInterface)context).setRadio(message, binding.getRoot());
+        ((PagerRadioButtonInterface)context).setRadio(message, binding.getRoot());
 
         List<Ability> abilities = new ArrayList<>();
         DbHelper dbHelper = new DbHelper(context);

@@ -17,7 +17,7 @@ import com.threemenstudio.VTMApplication;
 import com.threemenstudio.adapter.DisciplineAbilitiesPageAdapter;
 import com.threemenstudio.database.DbHelper;
 import com.threemenstudio.database.VtmDb;
-import com.threemenstudio.interfaces.DisciplineAbilitiesInterface;
+import com.threemenstudio.interfaces.PagerRadioButtonInterface;
 import com.threemenstudio.utilities.DepthPageTransformer;
 import com.threemenstudio.vampire.R;
 import com.threemenstudio.vampire.databinding.ActivityDisciplineAbilitiesBinding;
@@ -25,7 +25,7 @@ import com.threemenstudio.vampire.databinding.ActivityDisciplineAbilitiesBinding
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class DisciplineAbilities extends AppCompatActivity implements DisciplineAbilitiesInterface{
+public class DisciplineAbilities extends AppCompatActivity implements PagerRadioButtonInterface {
 
     private static Context context;
     private static int maxLevel;
@@ -131,5 +131,10 @@ public class DisciplineAbilities extends AppCompatActivity implements Discipline
 
         }
 
+    }
+
+    @Override
+    public void setRadioKoldunic(int message, View rootView) {
+        //do nothing
     }
 }

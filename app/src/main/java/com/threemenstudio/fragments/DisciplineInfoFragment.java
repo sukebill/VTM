@@ -61,7 +61,7 @@ public class DisciplineInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         FragmentDisciplineInfoBinding binding =
-                DataBindingUtil.inflate(inflater, R.layout.activity_discipline_info, container, false);
+                DataBindingUtil.inflate(inflater, R.layout.fragment_discipline_info, container, false);
         final int message = getArguments().getInt(ARG_SECTION_NUMBER);
         final Discipline discipline = disciplines.get(message);
         binding.discipline.setText(discipline.getTitle());
