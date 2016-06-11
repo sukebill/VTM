@@ -2,46 +2,45 @@ package com.threemenstudio.activities;
 
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.threemenstudio.vampire.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import com.threemenstudio.adapter.RvAdapterDisciplines;
 import com.threemenstudio.data.Discipline;
 import com.threemenstudio.database.DbHelper;
 import com.threemenstudio.database.VtmDb;
+import com.threemenstudio.vampire.R;
+import com.threemenstudio.vampire.databinding.ActivityDisciplinesBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Disciplines extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ActivityDisciplinesBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_disciplines);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_disciplines);
+        setSupportActionBar(binding.appBar.toolbar);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, binding.drawerLayout, binding.appBar.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        binding.drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        binding.navView.setNavigationItemSelectedListener(this);
 
         DbHelper dbHelper = new DbHelper(this);
         SQLiteDatabase db;
@@ -56,18 +55,17 @@ public class Disciplines extends AppCompatActivity
             sqle.printStackTrace();
         }
 
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        binding.appBar.content.rv.setLayoutManager(mLayoutManager);
         RecyclerView.Adapter mAdapter = new RvAdapterDisciplines(this,disciplines);
-        mRecyclerView.setAdapter(mAdapter);
+        binding.appBar.content.rv.setAdapter(mAdapter);
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (binding.drawerLayout != null && binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -115,8 +113,9 @@ public class Disciplines extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if (binding.drawerLayout != null) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        }
         return true;
     }
 }
