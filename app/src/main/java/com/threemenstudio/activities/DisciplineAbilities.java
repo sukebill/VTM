@@ -78,6 +78,11 @@ public class DisciplineAbilities extends AppCompatActivity implements PagerRadio
         binding.container.setCurrentItem(position);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,5 +1,6 @@
 package com.threemenstudio.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
@@ -118,6 +119,7 @@ public class DisciplineInfoFragment extends Fragment {
                     intent.putExtra(VTMApplication.getExtraTitle(), discipline.getTitle());
                     intent.putExtra(VTMApplication.getExtraOfficial(), discipline.getOfficialAbilities());
                     startActivity(intent);
+                    ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                 }
             });
@@ -136,6 +138,7 @@ public class DisciplineInfoFragment extends Fragment {
                         intent.putExtra(VTMApplication.getExtraDiscipline(), String.valueOf(discipline.getId()));
                         intent.putExtra(VTMApplication.getExtraTitle(), discipline.getTitle());
                         startActivity(intent);
+                        ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     } else {
 
@@ -144,6 +147,7 @@ public class DisciplineInfoFragment extends Fragment {
                         intent.putExtra(VTMApplication.getExtraTitle(), discipline.getTitle());
                         intent.putExtra(VTMApplication.getExtraOfficial(), discipline.getOfficialAbilities());
                         startActivity(intent);
+                        ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     }
 
@@ -167,6 +171,7 @@ public class DisciplineInfoFragment extends Fragment {
                         intent.putExtra(VTMApplication.getExtraDiscipline(), String.valueOf(discipline.getId()));
                         intent.putExtra(VTMApplication.getExtraTitle(), discipline.getTitle());
                         startActivity(intent);
+                        ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     } else {
 
@@ -176,6 +181,7 @@ public class DisciplineInfoFragment extends Fragment {
                         intent.putExtra(VTMApplication.getExtraRitual(), discipline.getRituals());
                         intent.putExtra(VTMApplication.getExtraRitualSystem(), discipline.getRitualsSystem());
                         startActivity(intent);
+                        ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
                     }
                 }

@@ -6,4 +6,45 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="Abilities" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryAbilities</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkAbilities</item>
+        <item name="colorAccent">@color/AccentAbilities</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkAbilities</item>
+    </style>
+
+    <style name="Disciplines" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="Paths" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryPaths</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkPaths</item>
+        <item name="colorAccent">@color/AccentPaths</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkPaths</item>
+    </style>
+
+    <style name="Rituals" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryRituals</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRituals</item>
+        <item name="colorAccent">@color/AccentRituals</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkRituals</item>
+    </style>
 </resources>

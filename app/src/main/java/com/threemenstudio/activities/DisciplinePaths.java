@@ -124,11 +124,18 @@ public class DisciplinePaths extends AppCompatActivity {
                     Intent intent = new Intent(context, PathInfo.class);
                     intent.putExtra(VTMApplication.getExtraPath(), String.valueOf(id));
                     startActivity(intent);
+                    overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
                 }
             });
             binding.content.paths.addView(pathBinding.getRoot());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
 }

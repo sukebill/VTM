@@ -59,6 +59,11 @@ public class DisciplineInfo extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

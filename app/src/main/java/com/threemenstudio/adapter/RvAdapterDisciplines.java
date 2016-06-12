@@ -1,6 +1,7 @@
 package com.threemenstudio.adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -57,6 +58,7 @@ public class RvAdapterDisciplines extends RecyclerView.Adapter<RvAdapterDiscipli
                 Intent intent = new Intent(context, DisciplineInfo.class);
                 intent.putExtra(VTMApplication.getExtraDiscipline(), String.valueOf(position));
                 context.startActivity(intent);
+                ((Activity)context).overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
             }
         });

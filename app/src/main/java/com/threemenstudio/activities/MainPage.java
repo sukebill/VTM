@@ -75,11 +75,13 @@ public class MainPage extends AppCompatActivity {
     public void openClans(View v){
         Intent intent = new Intent(this, Clans.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
     public void openDisciplines(View v){
         Intent intent = new Intent(this, Disciplines.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
     public void openSects(View v){

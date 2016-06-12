@@ -1,6 +1,7 @@
 package com.threemenstudio.adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -67,6 +68,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                 Intent intent = new Intent(context, ClanInfo.class);
                 intent.putExtra(VTMApplication.getExtraClan(), String.valueOf(position));
                 context.startActivity(intent);
+                ((Activity)context).overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+
             }
         });
     }

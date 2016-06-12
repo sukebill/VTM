@@ -67,7 +67,8 @@ public class Disciplines extends AppCompatActivity
         if (binding.drawerLayout != null && binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            finish();
+            overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
         }
     }
 

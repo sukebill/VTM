@@ -106,6 +106,12 @@ public class PathInfo extends AppCompatActivity implements PagerRadioButtonInter
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+    }
+
+    @Override
     public void setRadioKoldunic(int message, View rootView) {
         //do nothing
     }
