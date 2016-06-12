@@ -9,8 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.threemenstudio.VTMApplication;
@@ -20,6 +18,7 @@ import com.threemenstudio.database.VtmDb;
 import com.threemenstudio.interfaces.PagerRadioButtonInterface;
 import com.threemenstudio.vampire.R;
 import com.threemenstudio.vampire.databinding.FragmentDisciplineRitualsBinding;
+import com.threemenstudio.vampire.databinding.RitualBinding;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -102,113 +101,108 @@ public class DisciplineRitualsFragment extends Fragment {
         if(rituals.size() == 0){
             //variable time
             if(variable.size() == 1){
-                setOneRitual(variable, binding);
+                setOneRitual(variable, binding, inflater);
             }
             else{
-                setManyRituals(variable, binding, message);
+                setManyRituals(variable, binding, message, inflater);
             }
         }
         else if(rituals.size() == 1){
-            setOneRitual(rituals, binding);
+            setOneRitual(rituals, binding, inflater);
         }
         else{
-            setManyRituals(rituals, binding, message);
+            setManyRituals(rituals, binding, message, inflater);
         }
         return binding.getRoot();
     }
 
-    private void setOneRitual(List<Ritual> rituals, FragmentDisciplineRitualsBinding rootView){
+    private void setOneRitual(List<Ritual> rituals, FragmentDisciplineRitualsBinding binding,
+                              LayoutInflater inflater){
 
-        LinearLayout ritual = (LinearLayout) LinearLayout.inflate(context, R.layout.ritual, null);
-        TextView title = (TextView) ritual.findViewById(R.id.title);
+        RitualBinding ritualBinding = DataBindingUtil.inflate(inflater, R.layout.ritual, null, false);
         String[] name = rituals.get(0).getName().split(" - ");
         if(discipline.equals("Assamite Sorcery")){
-            title.setText(name[0]);
+            ritualBinding.title.setText(name[0]);
         }
         else{
-            title.setText(rituals.get(0).getName());
+            ritualBinding.title.setText(rituals.get(0).getName());
         }
-        TextView desc = (TextView) ritual.findViewById(R.id.desc);
-        desc.setText(rituals.get(0).getDescription());
-        TextView systemDesc = (TextView) ritual.findViewById(R.id.system_desc);
-        systemDesc.setText(rituals.get(0).getSystem());
+        ritualBinding.desc.setText(rituals.get(0).getDescription());
+        ritualBinding.systemDesc.setText(rituals.get(0).getSystem());
         if(rituals.get(0).getSystem() == null){
-            (ritual.findViewById(R.id.system)).setVisibility(View.GONE);
-            (ritual.findViewById(R.id.system_desc)).setVisibility(View.GONE);
+            ritualBinding.system.setVisibility(View.GONE);
+            ritualBinding.systemDesc.setVisibility(View.GONE);
         }
-        ritual.findViewById(R.id.arrow).setVisibility(View.GONE);
-        ritual.findViewById(R.id.child).setVisibility(View.VISIBLE);
-        ritual.findViewById(R.id.child).setPadding(0,0,0,0);
-        rootView.rituals.addView(ritual);
+        ritualBinding.arrow.setVisibility(View.GONE);
+        ritualBinding.child.setVisibility(View.VISIBLE);
+        ritualBinding.child.setPadding(0,0,0,0);
+        binding.rituals.addView(ritualBinding.getRoot());
 
     }
 
-    private void setManyRituals(List<Ritual> rituals, FragmentDisciplineRitualsBinding rootView, final int message){
+    private void setManyRituals(List<Ritual> rituals, FragmentDisciplineRitualsBinding rootView,
+                                final int message, LayoutInflater inflater){
 
         final List<Boolean> list = new ArrayList<>();
         for(int i = 0; i < rituals.size(); i++) {
+
             list.add(false);
-            final LinearLayout ritual = (LinearLayout) LinearLayout.inflate(context, R.layout.ritual, null);
-            TextView title = (TextView) ritual.findViewById(R.id.title);
+            final RitualBinding ritualBinding = DataBindingUtil.inflate(inflater, R.layout.ritual, null, false);
             String[] name = rituals.get(i).getName().split(" - ");
             switch (discipline) {
                 case "Assamite Sorcery":
-                    title.setText(name[0]);
+                    ritualBinding.title.setText(name[0]);
                     break;
                 case "Dark Thaumaturgy":
-                    title.setText(name[0]);
+                    ritualBinding.title.setText(name[0]);
                     break;
                 case ("Thaumaturgy"):
-                    setThaumaturgy(name, title);
+                    setThaumaturgy(name, ritualBinding.title);
                     break;
                 default:
-                    title.setText(rituals.get(i).getName());
+                    ritualBinding.title.setText(rituals.get(i).getName());
                     break;
             }
-            final LinearLayout child = (LinearLayout) ritual.findViewById(R.id.child);
             if(opened.containsKey(message)){
 
                 if(opened.get(message).get(i)){
 
-                    child.setVisibility(View.VISIBLE);
+                    ritualBinding.child.setVisibility(View.VISIBLE);
 
                 }
                 else{
 
-                    child.setVisibility(View.GONE);
+                    ritualBinding.child.setVisibility(View.GONE);
 
                 }
             }
             else{
 
-                child.setVisibility(View.GONE);
+                ritualBinding.child.setVisibility(View.GONE);
 
             }
-            TextView desc = (TextView) ritual.findViewById(R.id.desc);
-            desc.setText(rituals.get(i).getDescription());
-            TextView systemDesc = (TextView) ritual.findViewById(R.id.system_desc);
-            systemDesc.setText(rituals.get(i).getSystem());
+            ritualBinding.desc.setText(rituals.get(i).getDescription());
+            ritualBinding.systemDesc.setText(rituals.get(i).getSystem());
             if(rituals.get(i).getSystem() == null){
-                (ritual.findViewById(R.id.system)).setVisibility(View.GONE);
-                (ritual.findViewById(R.id.system_desc)).setVisibility(View.GONE);
+                ritualBinding.system.setVisibility(View.GONE);
+                ritualBinding.systemDesc.setVisibility(View.GONE);
             }
-            LinearLayout header = (LinearLayout) ritual.findViewById(R.id.header);
             final int finalI = i;
-            header.setOnClickListener(new View.OnClickListener() {
+            ritualBinding.header.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (opened.get(message).get(finalI)) {
-                        child.setVisibility(View.GONE);
+                        ritualBinding.child.setVisibility(View.GONE);
                         opened.get(message).set(finalI, false);
-                        ((ImageView)ritual.findViewById(R.id.arrow)).setImageResource(android.R.drawable.arrow_down_float);
+                        ritualBinding.arrow.setImageResource(android.R.drawable.arrow_down_float);
                     } else {
-                        child.setVisibility(View.VISIBLE);
+                        ritualBinding.child.setVisibility(View.VISIBLE);
                         opened.get(message).set(finalI, true);
-                        ((ImageView)ritual.findViewById(R.id.arrow)).setImageResource(android.R.drawable.arrow_up_float);
+                        ritualBinding.arrow.setImageResource(android.R.drawable.arrow_up_float);
                     }
                 }
             });
-            rootView.rituals.addView(ritual);
+            rootView.rituals.addView(ritualBinding.getRoot());
         }
         if(!opened.containsKey(message)){
 
